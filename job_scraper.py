@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from datetime import datetime
 
 d={}
 t=[]
 start=0
+now = datetime.now()
+timestamp = now.strftime('%Y-%m-%d_%H-%M-%S')
 
 try:
     TPR = int(input('Please input the number of hours to filter by: '))*3600 
@@ -78,4 +81,4 @@ while job_count/10 >= 0.1:
 #print(t)
 df = pd.DataFrame(t)
 print(df.shape[0])
-df.to_csv('linkedinjobs.csv', index=False, encoding='utf-8')
+df.to_csv(f'linkedinjobs_{keywords}_{timestamp}.csv', index=False, encoding='utf-8')
